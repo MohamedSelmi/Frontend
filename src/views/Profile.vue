@@ -14,7 +14,7 @@
   </v-form>
 </template>
 <script>
-import instance from "@/auth";
+import axiosInstance from "@/auth";
 // import axios from "axios";
 
 export default {
@@ -35,7 +35,7 @@ export default {
       // console.log(this.email, this.password);
 
       // Make a POST request to the API
-      instance
+      axiosInstance
         .post("http://localhost:8000/api/profile", {
           Experience: this.Experience,
           Competences: this.Competences,

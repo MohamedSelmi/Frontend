@@ -11,7 +11,9 @@
     <v-card-subtitle> {{ offer.Deadline }} </v-card-subtitle>
 
     <v-card-actions>
-      <v-btn color="orange-lighten-2" variant="text" @click="apply"> Apply </v-btn>
+      <v-btn color="orange-lighten-2" variant="text" @click="apply">
+        Apply
+      </v-btn>
     </v-card-actions>
 
     <v-expand-transition>
@@ -26,7 +28,7 @@
   </v-card>
 </template>
 <script>
-import axios from "axios";
+import axiosInstance from "@/auth";
 
 export default {
   props: ["offer"],
@@ -35,9 +37,8 @@ export default {
   }),
   methods: {
     async apply() {
-      axios
+      axiosInstance
         .post("http://localhost:8000/api/submitOffer", {
-          user_id: 1,
           offer_id: this.offer.id,
         })
         .then((response) => {

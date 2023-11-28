@@ -3,20 +3,13 @@
 </template>
 
 <script>
-import axios from "axios";
-import CardItem from '@/components/CardItem.vue'
+import axiosInstance from "@/auth";
+import CardItem from "@/components/CardItem.vue";
 
 export default {
   components: { CardItem },
   data: () => ({
-    items: [
-      {
-        name: "African Elephant",
-        species: "Loxodonta africana",
-        diet: "Herbivore",
-        habitat: "Savanna, Forests",
-      },
-    ],
+    items: [],
     //
   }),
   mounted() {
@@ -25,8 +18,8 @@ export default {
   },
   methods: {
     async loadOffers() {
-      axios
-        .get("http://localhost:8000/api/offer")
+      axiosInstance
+        .get("http://localhost:8000/api/offers")
         .then((response) => {
           // Handle the successful response here
           console.log("Offers:", response.data);
@@ -40,3 +33,4 @@ export default {
   },
 };
 </script>
+@/utils/auth
